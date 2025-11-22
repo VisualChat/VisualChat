@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4A73FDB02ECAE13D009874DD /* hnswlib_swift in Frameworks */ = {isa = PBXBuildFile; productRef = 4A73FDAF2ECAE13D009874DD /* hnswlib_swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		4A73FD9C2EC96D19009874DD /* VisualChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisualChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A73FDB02ECAE13D009874DD /* hnswlib_swift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = VisualChat;
 			packageProductDependencies = (
+				4A73FDAF2ECAE13D009874DD /* hnswlib_swift */,
 			);
 			productName = VisualChat;
 			productReference = 4A73FD9C2EC96D19009874DD /* VisualChat.app */;
@@ -94,6 +100,10 @@
 			);
 			mainGroup = 4A73FD932EC96D19009874DD;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				4A73FDAD2ECADBF0009874DD /* XCRemoteSwiftPackageReference "mlx-swift" */,
+				4A73FDAE2ECAE13D009874DD /* XCRemoteSwiftPackageReference "hnswlib" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4A73FD9D2EC96D19009874DD /* Products */;
 			projectDirPath = "";
@@ -345,6 +355,33 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4A73FDAD2ECADBF0009874DD /* XCRemoteSwiftPackageReference "mlx-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ml-explore/mlx-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.29.1;
+			};
+		};
+		4A73FDAE2ECAE13D009874DD /* XCRemoteSwiftPackageReference "hnswlib" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MegaPortal/hnswlib.swift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4A73FDAF2ECAE13D009874DD /* hnswlib_swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A73FDAE2ECAE13D009874DD /* XCRemoteSwiftPackageReference "hnswlib" */;
+			productName = hnswlib_swift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4A73FD942EC96D19009874DD /* Project object */;
 }

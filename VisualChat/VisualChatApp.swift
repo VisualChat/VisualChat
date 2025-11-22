@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct VisualChatApp: App {
@@ -13,5 +14,6 @@ struct VisualChatApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: [ChatThread.self, ChatMessage.self])
     }
 }
