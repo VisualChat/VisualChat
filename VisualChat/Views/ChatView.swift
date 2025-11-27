@@ -11,8 +11,11 @@ import SwiftData
 struct ChatView: View {
     @Environment(\.modelContext) private var context
 
-    @State var thread: ChatThread
+    @Bindable var thread: ChatThread
     @State private var draftText: String = ""
+    @State private var isProcessing: Bool = false
+    
+    private let service = ServiceOpenAIService()
 
     var body: some View {
         VStack(spacing: 0) {
@@ -44,9 +47,13 @@ struct ChatView: View {
                 Button {
                     sendMessage()
                 } label: {
-                    Image(systemName: "paperplane.fill")
+                    if isProcessing {
+                        ProgressView()
+                    } else {
+                        Image(systemName: "paperplane.fill")
+                    }
                 }
-                .disabled(draftText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                .disabled(draftText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || isProcessing)
             }
             .padding()
         }
@@ -74,16 +81,41 @@ struct ChatView: View {
         context.insert(userMessage)
 
         draftText = ""
+        isProcessing = true
 
-        // Fake “bot” reply for now so you can see the flow:
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let reply = ChatMessage(
-                text: "Echo: \(text)",
-                isFromUser: false,
-                createdAt: Date(),
-                thread: thread
-            )
-            context.insert(reply)
+        // Get response from Azure OpenAI
+        Task {
+            do {
+                // Build conversation history
+                let conversationMessages = sortedMessages.map { message in
+                    ServiceChatMessage(
+                        role: message.isFromUser ? "user" : "assistant",
+                        content: message.text
+                    )
+                }
+                
+                let response = try await service.sendChatCompletion(messages: conversationMessages)
+                // TODO handl tool calls if the response contains tool calls.
+                let reply = ChatMessage(
+                    text: response.textContent ?? "Bot: " + text,
+                    isFromUser: false,
+                    createdAt: Date(),
+                    thread: thread
+                )
+                context.insert(reply)
+                
+            } catch {
+                // Handle error by showing error message
+                let errorReply = ChatMessage(
+                    text: "Sorry, I encountered an error: \(error.localizedDescription)",
+                    isFromUser: false,
+                    createdAt: Date(),
+                    thread: thread
+                )
+                context.insert(errorReply)
+            }
+            
+            isProcessing = false
         }
     }
 

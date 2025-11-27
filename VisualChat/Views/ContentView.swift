@@ -10,7 +10,7 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var context
-    @Query(sort: \ChatThread.createdAt, order: .forward)
+    @Query(sort: \ChatThread.createdAt, order: .reverse)
     private var threads: [ChatThread]
 
     @State private var newThreadTitle: String = ""
@@ -22,20 +22,41 @@ struct ContentView: View {
             VStack {
                 List(selection: $selectedThread) {
                     ForEach(threads) { thread in
-                        NavigationLink(value: thread) {
-                            VStack(alignment: .leading) {
-                                Text(thread.title)
-                                    .font(.headline)
-                                if let lastMessage = thread.messages.sorted(by: { $0.createdAt > $1.createdAt }).first {
-                                    Text(lastMessage.text)
-                                        .font(.subheadline)
-                                        .lineLimit(1)
-                                        .foregroundStyle(.secondary)
+                        Button {
+                            selectedThread = thread
+                        } label: {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(thread.title)
+                                        .font(.headline)
+                                    if let lastMessage = thread.messages.sorted(by: { $0.createdAt > $1.createdAt }).first {
+                                        Text(lastMessage.text)
+                                            .font(.subheadline)
+                                            .lineLimit(1)
+                                            .foregroundStyle(.secondary)
+                                    }
                                 }
+                                Spacer()
+                            }
+                            .contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                        .tag(thread)
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            Button(role: .destructive) {
+                                deleteThread(thread)
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
+                        .contextMenu {
+                            Button(role: .destructive) {
+                                deleteThread(thread)
+                            } label: {
+                                Label("Delete", systemImage: "trash")
                             }
                         }
                     }
-                    .onDelete(perform: deleteThreads)
                 }
                 .navigationTitle("Chats")
                 
@@ -79,9 +100,10 @@ struct ContentView: View {
         newThreadTitle = ""
     }
 
-    private func deleteThreads(at offsets: IndexSet) {
-        for index in offsets {
-            context.delete(threads[index])
+    private func deleteThread(_ thread: ChatThread) {
+        if selectedThread?.id == thread.id {
+            selectedThread = nil
         }
+        context.delete(thread)
     }
 }

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VisualChat App Icon">
+  <defs>
+    <!-- Main background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="50%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    
+    <!-- Chat bubble gradient -->
+    <linearGradient id="bubbleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#FAFAFA"/>
+    </linearGradient>
+    
+    <!-- Chat bubble shine overlay -->
+    <linearGradient id="bubbleShine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    
+    <!-- Camera lens gradient -->
+    <radialGradient id="lensGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C4B5FD"/>
+      <stop offset="70%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </radialGradient>
+    
+    <!-- Inner lens shine -->
+    <radialGradient id="lensShine" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#E0E7FF" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#C7D2FE" stop-opacity="0"/>
+    </radialGradient>
+    
+    <!-- Shadow filters -->
+    <filter id="bubbleShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="12"/>
+      <feOffset dx="0" dy="6" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="lensShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="0" dy="3" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect x="0" y="0" width="1024" height="1024" rx="226" ry="226" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle top highlight -->
+  <ellipse cx="512" cy="140" rx="460" ry="140" fill="#FFFFFF" opacity="0.08"/>
+
+  <!-- Chat bubble (scaled up ~1.5x) -->
+  <g transform="translate(512, 480)">
+    <!-- Main bubble body with improved shape -->
+    <path d="M -360 -180 
+             C -360 -270, -300 -330, -210 -330
+             L 210 -330
+             C 300 -330, 360 -270, 360 -180
+             L 360 120
+             C 360 210, 300 270, 210 270
+             L -60 270
+             L -180 360
+             L -150 270
+             L -210 270
+             C -300 270, -360 210, -360 120
+             Z" 
+          fill="url(#bubbleGrad)" 
+          filter="url(#bubbleShadow)"
+          opacity="0.98"/>
+    
+    <!-- Bubble inner shadow/depth -->
+    <path d="M -345 -172 
+             C -345 -255, -292 -315, -210 -315
+             L 210 -315
+             C 292 -315, 345 -255, 345 -172
+             L 345 112" 
+          fill="none" 
+          stroke="#E0E7FF" 
+          stroke-width="3" 
+          opacity="0.6"/>
+  </g>
+
+  <!-- Camera lens assembly (scaled up ~1.5x and repositioned) -->
+  <g transform="translate(512, 460)">
+    <!-- Outer lens ring -->
+    <circle cx="0" cy="0" r="165" 
+            fill="url(#lensGrad)" 
+            filter="url(#lensShadow)"/>
+    
+    <!-- Inner lens ring -->
+    <circle cx="0" cy="0" r="135" 
+            fill="#6366F1" 
+            opacity="0.9"/>
+    
+    <!-- Lens glass/aperture -->
+    <circle cx="0" cy="0" r="108" 
+            fill="url(#lensShine)"/>
+    
+    <!-- Aperture blades (hexagonal) -->
+    <g fill="#1E1B4B" opacity="0.7">
+      <path d="M 0 -60 L 52 -30 L 52 30 L 0 60 L -52 30 L -52 -30 Z"/>
+    </g>
+    
+    <!-- Center aperture opening -->
+    <circle cx="0" cy="0" r="38" fill="#0F172A" opacity="0.85"/>
+    
+    <!-- Lens highlights -->
+    <circle cx="-38" cy="-38" r="22" fill="#FFFFFF" opacity="0.85"/>
+    <circle cx="30" cy="-22" r="12" fill="#FFFFFF" opacity="0.5"/>
+    
+    <!-- Outer ring detail -->
+    <circle cx="0" cy="0" r="165" 
+            fill="none" 
+            stroke="#6366F1" 
+            stroke-width="4" 
+            opacity="0.5"/>
+    
+    <!-- Lens mounting screws (decorative) -->
+    <g fill="#312E81" opacity="0.6">
+      <circle cx="0" cy="-142" r="6"/>
+      <circle cx="123" cy="-71" r="6"/>
+      <circle cx="123" cy="71" r="6"/>
+      <circle cx="0" cy="142" r="6"/>
+      <circle cx="-123" cy="71" r="6"/>
+      <circle cx="-123" cy="-71" r="6"/>
+    </g>
+  </g>
+
+  <!-- Chat indicator dots (scaled up and repositioned) -->
+  <g transform="translate(290, 720)" opacity="0.95">
+    <circle cx="0" cy="0" r="18" fill="#8B5CF6"/>
+    <circle cx="60" cy="0" r="18" fill="#8B5CF6" opacity="0.8"/>
+    <circle cx="120" cy="0" r="18" fill="#8B5CF6" opacity="0.6"/>
+  </g>
+
+</svg>
