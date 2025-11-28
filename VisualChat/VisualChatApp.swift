@@ -12,8 +12,8 @@ import SwiftData
 struct VisualChatApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
         }
-        .modelContainer(for: [ChatThread.self, ChatMessage.self])
+        .modelContainer(for: [ChatThread.self, ChatMessage.self, PhotoLibrary.self, Photo.self])
     }
 }

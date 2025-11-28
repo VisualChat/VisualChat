@@ -49,3 +49,60 @@ class ChatMessage {
         self.thread = thread
     }
 }
+
+@Model
+class PhotoLibrary {
+    @Attribute(.unique) var id: UUID
+    var path: String
+    var name: String
+    var createdAt: Date
+    var lastIndexedAt: Date?
+    var securityBookmark: Data?
+    @Relationship(deleteRule: .cascade, inverse: \Photo.library)
+    var photos: [Photo] = []
+
+    init(
+        id: UUID = UUID(),
+        path: String,
+        name: String,
+        createdAt: Date = Date(),
+        lastIndexedAt: Date? = nil,
+        securityBookmark: Data? = nil
+    ) {
+        self.id = id
+        self.path = path
+        self.name = name
+        self.createdAt = createdAt
+        self.lastIndexedAt = lastIndexedAt
+        self.securityBookmark = securityBookmark
+    }
+}
+
+@Model
+class Photo {
+    @Attribute(.unique) var id: UUID
+    var filePath: String
+    var fileName: String
+    var fileSize: Int64
+    var createdAt: Date
+    var modifiedAt: Date
+    var library: PhotoLibrary?
+
+    init(
+        id: UUID = UUID(),
+        filePath: String,
+        fileName: String,
+        fileSize: Int64,
+        createdAt: Date = Date(),
+        modifiedAt: Date,
+        library: PhotoLibrary? = nil
+    ) {
+        self.id = id
+        self.filePath = filePath
+        self.fileName = fileName
+        self.fileSize = fileSize
+        self.createdAt = createdAt
+        self.modifiedAt = modifiedAt
+        self.library = library
+    }
+}
