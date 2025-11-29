@@ -106,8 +106,14 @@ struct PhotoThumbnailView: View {
             let thumbnailImage = await Task.detached { () -> NSImage? in
                 let url = URL(fileURLWithPath: filePath)
                 
+                let options: [CFString: Any] = [
+                    kCGImageSourceCreateThumbnailFromImageAlways: true,
+                    kCGImageSourceCreateThumbnailWithTransform: true,
+                    kCGImageSourceThumbnailMaxPixelSize: 1024
+                ]
+                
                 guard let imageSource = CGImageSourceCreateWithURL(url as CFURL, nil),
-                      let cgImage = CGImageSourceCreateImageAtIndex(imageSource, 0, nil) else {
+                      let cgImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, options as CFDictionary) else {
                     return nil
                 }
                 
@@ -157,8 +163,14 @@ struct PhotoThumbnailView: View {
             let thumbnailImage = await Task.detached { () -> UIImage? in
                 let url = URL(fileURLWithPath: filePath)
                 
+                let options: [CFString: Any] = [
+                    kCGImageSourceCreateThumbnailFromImageAlways: true,
+                    kCGImageSourceCreateThumbnailWithTransform: true,
+                    kCGImageSourceThumbnailMaxPixelSize: 1024
+                ]
+                
                 guard let imageSource = CGImageSourceCreateWithURL(url as CFURL, nil),
-                      let cgImage = CGImageSourceCreateImageAtIndex(imageSource, 0, nil) else {
+                      let cgImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, options as CFDictionary) else {
                     return nil
                 }
                 
