@@ -15,6 +15,7 @@ struct PhotosView: View {
     
     @State private var selectedLibrary: PhotoLibrary?
     @State private var showingAddLibrary = false
+    @AppStorage("lastSelectedPhotoLibraryID") private var lastSelectedPhotoLibraryID: String?
     @State private var newLibraryPath = ""
     @State private var newLibraryName = ""
     @StateObject private var indexingService = PhotoIndexingService()
@@ -47,6 +48,9 @@ struct PhotosView: View {
                         }
                         .buttonStyle(.plain)
                         .tag(library)
+                        .onChange(of: selectedLibrary) { _, newValue in
+                            lastSelectedPhotoLibraryID = newValue?.id.uuidString
+                        }
                         .swipeActions(edge: .trailing) {
                             Button(role: .destructive) {
                                 deleteLibrary(library)
@@ -81,6 +85,9 @@ struct PhotosView: View {
                     }
                 }
                 .navigationTitle("Photo Libraries")
+                .onAppear {
+                    restoreLastSelectedLibrary()
+                }
                 
                 Button {
                     showingAddLibrary = true
@@ -133,6 +140,7 @@ struct PhotosView: View {
         let url = URL(fileURLWithPath: path)
         var bookmarkData: Data?
         
+        #if os(macOS)
         do {
             bookmarkData = try url.bookmarkData(
                 options: .withSecurityScope,
@@ -142,6 +150,7 @@ struct PhotosView: View {
         } catch {
             print("Failed to create bookmark: \(error)")
         }
+        #endif
         
         let library = PhotoLibrary(path: path, name: name, securityBookmark: bookmarkData)
         context.insert(library)
@@ -171,5 +180,15 @@ struct PhotosView: View {
             selectedLibrary = nil
         }
         context.delete(library)
+    }
+    
+    private func restoreLastSelectedLibrary() {
+        guard selectedLibrary == nil,
+              let libraryIDString = lastSelectedPhotoLibraryID,
+              let libraryID = UUID(uuidString: libraryIDString) else {
+            return
+        }
+        
+        selectedLibrary = libraries.first { $0.id == libraryID }
     }
 }

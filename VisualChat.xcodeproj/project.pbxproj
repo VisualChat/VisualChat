@@ -8,7 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		4AA42FB22ED29C4700A1FFF8 /* hnswlib_swift in Frameworks */ = {isa = PBXBuildFile; productRef = 4AA42FB12ED29C4700A1FFF8 /* hnswlib_swift */; };
+		4AA430332ED93D9B00A1FFF8 /* MLX in Frameworks */ = {isa = PBXBuildFile; productRef = 4AA430322ED93D9B00A1FFF8 /* MLX */; };
+		4AA430352ED93D9B00A1FFF8 /* MLXFast in Frameworks */ = {isa = PBXBuildFile; productRef = 4AA430342ED93D9B00A1FFF8 /* MLXFast */; };
+		4AA430372ED93D9B00A1FFF8 /* MLXFFT in Frameworks */ = {isa = PBXBuildFile; productRef = 4AA430362ED93D9B00A1FFF8 /* MLXFFT */; };
+		4AA430392ED93D9B00A1FFF8 /* MLXLinalg in Frameworks */ = {isa = PBXBuildFile; productRef = 4AA430382ED93D9B00A1FFF8 /* MLXLinalg */; };
+		4AA4303B2ED93D9B00A1FFF8 /* MLXNN in Frameworks */ = {isa = PBXBuildFile; productRef = 4AA4303A2ED93D9B00A1FFF8 /* MLXNN */; };
+		4AA4303D2ED93D9B00A1FFF8 /* MLXOptimizers in Frameworks */ = {isa = PBXBuildFile; productRef = 4AA4303C2ED93D9B00A1FFF8 /* MLXOptimizers */; };
+		4AA4303F2ED93D9B00A1FFF8 /* MLXRandom in Frameworks */ = {isa = PBXBuildFile; productRef = 4AA4303E2ED93D9B00A1FFF8 /* MLXRandom */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4AA430252ED928DC00A1FFF8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4A73FD9C2EC96D19009874DD /* VisualChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisualChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -27,7 +47,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AA4303B2ED93D9B00A1FFF8 /* MLXNN in Frameworks */,
+				4AA430392ED93D9B00A1FFF8 /* MLXLinalg in Frameworks */,
+				4AA430352ED93D9B00A1FFF8 /* MLXFast in Frameworks */,
+				4AA4303F2ED93D9B00A1FFF8 /* MLXRandom in Frameworks */,
+				4AA430332ED93D9B00A1FFF8 /* MLX in Frameworks */,
+				4AA4303D2ED93D9B00A1FFF8 /* MLXOptimizers in Frameworks */,
 				4AA42FB22ED29C4700A1FFF8 /* hnswlib_swift in Frameworks */,
+				4AA430372ED93D9B00A1FFF8 /* MLXFFT in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,8 +64,9 @@
 		4A73FD932EC96D19009874DD = {
 			isa = PBXGroup;
 			children = (
-				4A73FD9E2EC96D19009874DD /* VisualChat */,
 				4A73FD9D2EC96D19009874DD /* Products */,
+				4A73FD9E2EC96D19009874DD /* VisualChat */,
+				4AA430312ED93D9B00A1FFF8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -48,6 +76,13 @@
 				4A73FD9C2EC96D19009874DD /* VisualChat.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		4AA430312ED93D9B00A1FFF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,6 +95,7 @@
 				4A73FD982EC96D19009874DD /* Sources */,
 				4A73FD992EC96D19009874DD /* Frameworks */,
 				4A73FD9A2EC96D19009874DD /* Resources */,
+				4AA430252ED928DC00A1FFF8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -71,6 +107,13 @@
 			name = VisualChat;
 			packageProductDependencies = (
 				4AA42FB12ED29C4700A1FFF8 /* hnswlib_swift */,
+				4AA430322ED93D9B00A1FFF8 /* MLX */,
+				4AA430342ED93D9B00A1FFF8 /* MLXFast */,
+				4AA430362ED93D9B00A1FFF8 /* MLXFFT */,
+				4AA430382ED93D9B00A1FFF8 /* MLXLinalg */,
+				4AA4303A2ED93D9B00A1FFF8 /* MLXNN */,
+				4AA4303C2ED93D9B00A1FFF8 /* MLXOptimizers */,
+				4AA4303E2ED93D9B00A1FFF8 /* MLXRandom */,
 			);
 			productName = VisualChat;
 			productReference = 4A73FD9C2EC96D19009874DD /* VisualChat.app */;
@@ -256,7 +299,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D3VJSNKD86;
+				DEVELOPMENT_TEAM = D78F7D837Y;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -309,7 +352,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D3VJSNKD86;
+				DEVELOPMENT_TEAM = D78F7D837Y;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -402,6 +445,41 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4AA42FB02ED29C4700A1FFF8 /* XCRemoteSwiftPackageReference "hnswlib.swift" */;
 			productName = hnswlib_swift;
+		};
+		4AA430322ED93D9B00A1FFF8 /* MLX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AA42FAF2ED29BF900A1FFF8 /* XCRemoteSwiftPackageReference "mlx-swift" */;
+			productName = MLX;
+		};
+		4AA430342ED93D9B00A1FFF8 /* MLXFast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AA42FAF2ED29BF900A1FFF8 /* XCRemoteSwiftPackageReference "mlx-swift" */;
+			productName = MLXFast;
+		};
+		4AA430362ED93D9B00A1FFF8 /* MLXFFT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AA42FAF2ED29BF900A1FFF8 /* XCRemoteSwiftPackageReference "mlx-swift" */;
+			productName = MLXFFT;
+		};
+		4AA430382ED93D9B00A1FFF8 /* MLXLinalg */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AA42FAF2ED29BF900A1FFF8 /* XCRemoteSwiftPackageReference "mlx-swift" */;
+			productName = MLXLinalg;
+		};
+		4AA4303A2ED93D9B00A1FFF8 /* MLXNN */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AA42FAF2ED29BF900A1FFF8 /* XCRemoteSwiftPackageReference "mlx-swift" */;
+			productName = MLXNN;
+		};
+		4AA4303C2ED93D9B00A1FFF8 /* MLXOptimizers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AA42FAF2ED29BF900A1FFF8 /* XCRemoteSwiftPackageReference "mlx-swift" */;
+			productName = MLXOptimizers;
+		};
+		4AA4303E2ED93D9B00A1FFF8 /* MLXRandom */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AA42FAF2ED29BF900A1FFF8 /* XCRemoteSwiftPackageReference "mlx-swift" */;
+			productName = MLXRandom;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

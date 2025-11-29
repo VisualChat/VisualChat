@@ -6,14 +6,23 @@
 //
 
 import SwiftUI
+#if os(macOS)
 import AppKit
+#elseif os(iOS)
+import UIKit
+#endif
 
 struct PhotoDetailView: View {
     let photo: Photo
+    #if os(macOS)
     @State private var image: NSImage?
+    #elseif os(iOS)
+    @State private var image: UIImage?
+    #endif
     @Environment(\.dismiss) private var dismiss
     
     private func requestAccessIfNeeded() -> URL? {
+        #if os(macOS)
         guard let library = photo.library,
               let bookmarkData = library.securityBookmark else {
             return nil
@@ -36,6 +45,10 @@ struct PhotoDetailView: View {
         }
         
         return nil
+        #else
+        // iOS doesn't use security-scoped bookmarks
+        return nil
+        #endif
     }
     
     var body: some View {
@@ -53,10 +66,17 @@ struct PhotoDetailView: View {
             if let image = image {
                 GeometryReader { geometry in
                     ScrollView([.horizontal, .vertical]) {
+                        #if os(macOS)
                         Image(nsImage: image)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
+                        #elseif os(iOS)
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
+                        #endif
                     }
                 }
             } else {
@@ -85,14 +105,24 @@ struct PhotoDetailView: View {
         let scopedURL = requestAccessIfNeeded()
         
         defer {
+            #if os(macOS)
             scopedURL?.stopAccessingSecurityScopedResource()
+            #endif
         }
         
         let filePath = photo.filePath
+        #if os(macOS)
         let loadedImage = await Task.detached(priority: .userInitiated) {
             let url = URL(fileURLWithPath: filePath)
             return NSImage(contentsOf: url)
         }.value
+        #elseif os(iOS)
+        let loadedImage = await Task.detached(priority: .userInitiated) { () -> UIImage? in
+            let url = URL(fileURLWithPath: filePath)
+            guard let data = try? Data(contentsOf: url) else { return nil }
+            return UIImage(data: data)
+        }.value
+        #endif
         
         if let loadedImage = loadedImage {
             image = loadedImage

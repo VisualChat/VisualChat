@@ -1,0 +1,1539 @@
+{
+  "encoder_type": "image",
+  "num_layers": 122,
+  "total_parameters": 11368534,
+  "parameter_names": [
+    "trunk.stem.0.reparam_conv.weight",
+    "trunk.stem.0.reparam_conv.bias",
+    "trunk.stem.1.reparam_conv.weight",
+    "trunk.stem.1.reparam_conv.bias",
+    "trunk.stem.2.reparam_conv.weight",
+    "trunk.stem.2.reparam_conv.bias",
+    "trunk.stages.0.blocks.0.token_mixer.reparam_conv.weight",
+    "trunk.stages.0.blocks.0.token_mixer.reparam_conv.bias",
+    "trunk.stages.0.blocks.0.mlp.conv.conv.weight",
+    "trunk.stages.0.blocks.0.mlp.conv.bn.weight",
+    "trunk.stages.0.blocks.0.mlp.conv.bn.bias",
+    "trunk.stages.0.blocks.0.mlp.conv.bn.running_mean",
+    "trunk.stages.0.blocks.0.mlp.conv.bn.running_var",
+    "trunk.stages.0.blocks.0.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.0.blocks.0.mlp.fc1.weight",
+    "trunk.stages.0.blocks.0.mlp.fc1.bias",
+    "trunk.stages.0.blocks.0.mlp.fc2.weight",
+    "trunk.stages.0.blocks.0.mlp.fc2.bias",
+    "trunk.stages.0.blocks.0.layer_scale.gamma",
+    "trunk.stages.0.blocks.1.token_mixer.reparam_conv.weight",
+    "trunk.stages.0.blocks.1.token_mixer.reparam_conv.bias",
+    "trunk.stages.0.blocks.1.mlp.conv.conv.weight",
+    "trunk.stages.0.blocks.1.mlp.conv.bn.weight",
+    "trunk.stages.0.blocks.1.mlp.conv.bn.bias",
+    "trunk.stages.0.blocks.1.mlp.conv.bn.running_mean",
+    "trunk.stages.0.blocks.1.mlp.conv.bn.running_var",
+    "trunk.stages.0.blocks.1.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.0.blocks.1.mlp.fc1.weight",
+    "trunk.stages.0.blocks.1.mlp.fc1.bias",
+    "trunk.stages.0.blocks.1.mlp.fc2.weight",
+    "trunk.stages.0.blocks.1.mlp.fc2.bias",
+    "trunk.stages.0.blocks.1.layer_scale.gamma",
+    "trunk.stages.1.downsample.proj.0.reparam_conv.weight",
+    "trunk.stages.1.downsample.proj.0.reparam_conv.bias",
+    "trunk.stages.1.downsample.proj.1.reparam_conv.weight",
+    "trunk.stages.1.downsample.proj.1.reparam_conv.bias",
+    "trunk.stages.1.blocks.0.token_mixer.reparam_conv.weight",
+    "trunk.stages.1.blocks.0.token_mixer.reparam_conv.bias",
+    "trunk.stages.1.blocks.0.mlp.conv.conv.weight",
+    "trunk.stages.1.blocks.0.mlp.conv.bn.weight",
+    "trunk.stages.1.blocks.0.mlp.conv.bn.bias",
+    "trunk.stages.1.blocks.0.mlp.conv.bn.running_mean",
+    "trunk.stages.1.blocks.0.mlp.conv.bn.running_var",
+    "trunk.stages.1.blocks.0.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.1.blocks.0.mlp.fc1.weight",
+    "trunk.stages.1.blocks.0.mlp.fc1.bias",
+    "trunk.stages.1.blocks.0.mlp.fc2.weight",
+    "trunk.stages.1.blocks.0.mlp.fc2.bias",
+    "trunk.stages.1.blocks.0.layer_scale.gamma",
+    "trunk.stages.1.blocks.1.token_mixer.reparam_conv.weight",
+    "trunk.stages.1.blocks.1.token_mixer.reparam_conv.bias",
+    "trunk.stages.1.blocks.1.mlp.conv.conv.weight",
+    "trunk.stages.1.blocks.1.mlp.conv.bn.weight",
+    "trunk.stages.1.blocks.1.mlp.conv.bn.bias",
+    "trunk.stages.1.blocks.1.mlp.conv.bn.running_mean",
+    "trunk.stages.1.blocks.1.mlp.conv.bn.running_var",
+    "trunk.stages.1.blocks.1.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.1.blocks.1.mlp.fc1.weight",
+    "trunk.stages.1.blocks.1.mlp.fc1.bias",
+    "trunk.stages.1.blocks.1.mlp.fc2.weight",
+    "trunk.stages.1.blocks.1.mlp.fc2.bias",
+    "trunk.stages.1.blocks.1.layer_scale.gamma",
+    "trunk.stages.1.blocks.2.token_mixer.reparam_conv.weight",
+    "trunk.stages.1.blocks.2.token_mixer.reparam_conv.bias",
+    "trunk.stages.1.blocks.2.mlp.conv.conv.weight",
+    "trunk.stages.1.blocks.2.mlp.conv.bn.weight",
+    "trunk.stages.1.blocks.2.mlp.conv.bn.bias",
+    "trunk.stages.1.blocks.2.mlp.conv.bn.running_mean",
+    "trunk.stages.1.blocks.2.mlp.conv.bn.running_var",
+    "trunk.stages.1.blocks.2.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.1.blocks.2.mlp.fc1.weight",
+    "trunk.stages.1.blocks.2.mlp.fc1.bias",
+    "trunk.stages.1.blocks.2.mlp.fc2.weight",
+    "trunk.stages.1.blocks.2.mlp.fc2.bias",
+    "trunk.stages.1.blocks.2.layer_scale.gamma",
+    "trunk.stages.1.blocks.3.token_mixer.reparam_conv.weight",
+    "trunk.stages.1.blocks.3.token_mixer.reparam_conv.bias",
+    "trunk.stages.1.blocks.3.mlp.conv.conv.weight",
+    "trunk.stages.1.blocks.3.mlp.conv.bn.weight",
+    "trunk.stages.1.blocks.3.mlp.conv.bn.bias",
+    "trunk.stages.1.blocks.3.mlp.conv.bn.running_mean",
+    "trunk.stages.1.blocks.3.mlp.conv.bn.running_var",
+    "trunk.stages.1.blocks.3.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.1.blocks.3.mlp.fc1.weight",
+    "trunk.stages.1.blocks.3.mlp.fc1.bias",
+    "trunk.stages.1.blocks.3.mlp.fc2.weight",
+    "trunk.stages.1.blocks.3.mlp.fc2.bias",
+    "trunk.stages.1.blocks.3.layer_scale.gamma",
+    "trunk.stages.1.blocks.4.token_mixer.reparam_conv.weight",
+    "trunk.stages.1.blocks.4.token_mixer.reparam_conv.bias",
+    "trunk.stages.1.blocks.4.mlp.conv.conv.weight",
+    "trunk.stages.1.blocks.4.mlp.conv.bn.weight",
+    "trunk.stages.1.blocks.4.mlp.conv.bn.bias",
+    "trunk.stages.1.blocks.4.mlp.conv.bn.running_mean",
+    "trunk.stages.1.blocks.4.mlp.conv.bn.running_var",
+    "trunk.stages.1.blocks.4.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.1.blocks.4.mlp.fc1.weight",
+    "trunk.stages.1.blocks.4.mlp.fc1.bias",
+    "trunk.stages.1.blocks.4.mlp.fc2.weight",
+    "trunk.stages.1.blocks.4.mlp.fc2.bias",
+    "trunk.stages.1.blocks.4.layer_scale.gamma",
+    "trunk.stages.1.blocks.5.token_mixer.reparam_conv.weight",
+    "trunk.stages.1.blocks.5.token_mixer.reparam_conv.bias",
+    "trunk.stages.1.blocks.5.mlp.conv.conv.weight",
+    "trunk.stages.1.blocks.5.mlp.conv.bn.weight",
+    "trunk.stages.1.blocks.5.mlp.conv.bn.bias",
+    "trunk.stages.1.blocks.5.mlp.conv.bn.running_mean",
+    "trunk.stages.1.blocks.5.mlp.conv.bn.running_var",
+    "trunk.stages.1.blocks.5.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.1.blocks.5.mlp.fc1.weight",
+    "trunk.stages.1.blocks.5.mlp.fc1.bias",
+    "trunk.stages.1.blocks.5.mlp.fc2.weight",
+    "trunk.stages.1.blocks.5.mlp.fc2.bias",
+    "trunk.stages.1.blocks.5.layer_scale.gamma",
+    "trunk.stages.2.downsample.proj.0.se.fc1.weight",
+    "trunk.stages.2.downsample.proj.0.se.fc1.bias",
+    "trunk.stages.2.downsample.proj.0.se.fc2.weight",
+    "trunk.stages.2.downsample.proj.0.se.fc2.bias",
+    "trunk.stages.2.downsample.proj.0.reparam_conv.weight",
+    "trunk.stages.2.downsample.proj.0.reparam_conv.bias",
+    "trunk.stages.2.downsample.proj.1.reparam_conv.weight",
+    "trunk.stages.2.downsample.proj.1.reparam_conv.bias",
+    "trunk.stages.2.blocks.0.token_mixer.reparam_conv.weight",
+    "trunk.stages.2.blocks.0.token_mixer.reparam_conv.bias",
+    "trunk.stages.2.blocks.0.mlp.conv.conv.weight",
+    "trunk.stages.2.blocks.0.mlp.conv.bn.weight",
+    "trunk.stages.2.blocks.0.mlp.conv.bn.bias",
+    "trunk.stages.2.blocks.0.mlp.conv.bn.running_mean",
+    "trunk.stages.2.blocks.0.mlp.conv.bn.running_var",
+    "trunk.stages.2.blocks.0.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.2.blocks.0.mlp.fc1.weight",
+    "trunk.stages.2.blocks.0.mlp.fc1.bias",
+    "trunk.stages.2.blocks.0.mlp.fc2.weight",
+    "trunk.stages.2.blocks.0.mlp.fc2.bias",
+    "trunk.stages.2.blocks.0.layer_scale.gamma",
+    "trunk.stages.2.blocks.1.token_mixer.reparam_conv.weight",
+    "trunk.stages.2.blocks.1.token_mixer.reparam_conv.bias",
+    "trunk.stages.2.blocks.1.mlp.conv.conv.weight",
+    "trunk.stages.2.blocks.1.mlp.conv.bn.weight",
+    "trunk.stages.2.blocks.1.mlp.conv.bn.bias",
+    "trunk.stages.2.blocks.1.mlp.conv.bn.running_mean",
+    "trunk.stages.2.blocks.1.mlp.conv.bn.running_var",
+    "trunk.stages.2.blocks.1.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.2.blocks.1.mlp.fc1.weight",
+    "trunk.stages.2.blocks.1.mlp.fc1.bias",
+    "trunk.stages.2.blocks.1.mlp.fc2.weight",
+    "trunk.stages.2.blocks.1.mlp.fc2.bias",
+    "trunk.stages.2.blocks.1.layer_scale.gamma",
+    "trunk.stages.2.blocks.2.token_mixer.reparam_conv.weight",
+    "trunk.stages.2.blocks.2.token_mixer.reparam_conv.bias",
+    "trunk.stages.2.blocks.2.mlp.conv.conv.weight",
+    "trunk.stages.2.blocks.2.mlp.conv.bn.weight",
+    "trunk.stages.2.blocks.2.mlp.conv.bn.bias",
+    "trunk.stages.2.blocks.2.mlp.conv.bn.running_mean",
+    "trunk.stages.2.blocks.2.mlp.conv.bn.running_var",
+    "trunk.stages.2.blocks.2.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.2.blocks.2.mlp.fc1.weight",
+    "trunk.stages.2.blocks.2.mlp.fc1.bias",
+    "trunk.stages.2.blocks.2.mlp.fc2.weight",
+    "trunk.stages.2.blocks.2.mlp.fc2.bias",
+    "trunk.stages.2.blocks.2.layer_scale.gamma",
+    "trunk.stages.2.blocks.3.token_mixer.reparam_conv.weight",
+    "trunk.stages.2.blocks.3.token_mixer.reparam_conv.bias",
+    "trunk.stages.2.blocks.3.mlp.conv.conv.weight",
+    "trunk.stages.2.blocks.3.mlp.conv.bn.weight",
+    "trunk.stages.2.blocks.3.mlp.conv.bn.bias",
+    "trunk.stages.2.blocks.3.mlp.conv.bn.running_mean",
+    "trunk.stages.2.blocks.3.mlp.conv.bn.running_var",
+    "trunk.stages.2.blocks.3.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.2.blocks.3.mlp.fc1.weight",
+    "trunk.stages.2.blocks.3.mlp.fc1.bias",
+    "trunk.stages.2.blocks.3.mlp.fc2.weight",
+    "trunk.stages.2.blocks.3.mlp.fc2.bias",
+    "trunk.stages.2.blocks.3.layer_scale.gamma",
+    "trunk.stages.2.blocks.4.token_mixer.reparam_conv.weight",
+    "trunk.stages.2.blocks.4.token_mixer.reparam_conv.bias",
+    "trunk.stages.2.blocks.4.mlp.conv.conv.weight",
+    "trunk.stages.2.blocks.4.mlp.conv.bn.weight",
+    "trunk.stages.2.blocks.4.mlp.conv.bn.bias",
+    "trunk.stages.2.blocks.4.mlp.conv.bn.running_mean",
+    "trunk.stages.2.blocks.4.mlp.conv.bn.running_var",
+    "trunk.stages.2.blocks.4.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.2.blocks.4.mlp.fc1.weight",
+    "trunk.stages.2.blocks.4.mlp.fc1.bias",
+    "trunk.stages.2.blocks.4.mlp.fc2.weight",
+    "trunk.stages.2.blocks.4.mlp.fc2.bias",
+    "trunk.stages.2.blocks.4.layer_scale.gamma",
+    "trunk.stages.2.blocks.5.token_mixer.reparam_conv.weight",
+    "trunk.stages.2.blocks.5.token_mixer.reparam_conv.bias",
+    "trunk.stages.2.blocks.5.mlp.conv.conv.weight",
+    "trunk.stages.2.blocks.5.mlp.conv.bn.weight",
+    "trunk.stages.2.blocks.5.mlp.conv.bn.bias",
+    "trunk.stages.2.blocks.5.mlp.conv.bn.running_mean",
+    "trunk.stages.2.blocks.5.mlp.conv.bn.running_var",
+    "trunk.stages.2.blocks.5.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.2.blocks.5.mlp.fc1.weight",
+    "trunk.stages.2.blocks.5.mlp.fc1.bias",
+    "trunk.stages.2.blocks.5.mlp.fc2.weight",
+    "trunk.stages.2.blocks.5.mlp.fc2.bias",
+    "trunk.stages.2.blocks.5.layer_scale.gamma",
+    "trunk.stages.2.blocks.6.token_mixer.reparam_conv.weight",
+    "trunk.stages.2.blocks.6.token_mixer.reparam_conv.bias",
+    "trunk.stages.2.blocks.6.mlp.conv.conv.weight",
+    "trunk.stages.2.blocks.6.mlp.conv.bn.weight",
+    "trunk.stages.2.blocks.6.mlp.conv.bn.bias",
+    "trunk.stages.2.blocks.6.mlp.conv.bn.running_mean",
+    "trunk.stages.2.blocks.6.mlp.conv.bn.running_var",
+    "trunk.stages.2.blocks.6.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.2.blocks.6.mlp.fc1.weight",
+    "trunk.stages.2.blocks.6.mlp.fc1.bias",
+    "trunk.stages.2.blocks.6.mlp.fc2.weight",
+    "trunk.stages.2.blocks.6.mlp.fc2.bias",
+    "trunk.stages.2.blocks.6.layer_scale.gamma",
+    "trunk.stages.2.blocks.7.token_mixer.reparam_conv.weight",
+    "trunk.stages.2.blocks.7.token_mixer.reparam_conv.bias",
+    "trunk.stages.2.blocks.7.mlp.conv.conv.weight",
+    "trunk.stages.2.blocks.7.mlp.conv.bn.weight",
+    "trunk.stages.2.blocks.7.mlp.conv.bn.bias",
+    "trunk.stages.2.blocks.7.mlp.conv.bn.running_mean",
+    "trunk.stages.2.blocks.7.mlp.conv.bn.running_var",
+    "trunk.stages.2.blocks.7.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.2.blocks.7.mlp.fc1.weight",
+    "trunk.stages.2.blocks.7.mlp.fc1.bias",
+    "trunk.stages.2.blocks.7.mlp.fc2.weight",
+    "trunk.stages.2.blocks.7.mlp.fc2.bias",
+    "trunk.stages.2.blocks.7.layer_scale.gamma",
+    "trunk.stages.2.blocks.8.token_mixer.reparam_conv.weight",
+    "trunk.stages.2.blocks.8.token_mixer.reparam_conv.bias",
+    "trunk.stages.2.blocks.8.mlp.conv.conv.weight",
+    "trunk.stages.2.blocks.8.mlp.conv.bn.weight",
+    "trunk.stages.2.blocks.8.mlp.conv.bn.bias",
+    "trunk.stages.2.blocks.8.mlp.conv.bn.running_mean",
+    "trunk.stages.2.blocks.8.mlp.conv.bn.running_var",
+    "trunk.stages.2.blocks.8.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.2.blocks.8.mlp.fc1.weight",
+    "trunk.stages.2.blocks.8.mlp.fc1.bias",
+    "trunk.stages.2.blocks.8.mlp.fc2.weight",
+    "trunk.stages.2.blocks.8.mlp.fc2.bias",
+    "trunk.stages.2.blocks.8.layer_scale.gamma",
+    "trunk.stages.2.blocks.9.token_mixer.reparam_conv.weight",
+    "trunk.stages.2.blocks.9.token_mixer.reparam_conv.bias",
+    "trunk.stages.2.blocks.9.mlp.conv.conv.weight",
+    "trunk.stages.2.blocks.9.mlp.conv.bn.weight",
+    "trunk.stages.2.blocks.9.mlp.conv.bn.bias",
+    "trunk.stages.2.blocks.9.mlp.conv.bn.running_mean",
+    "trunk.stages.2.blocks.9.mlp.conv.bn.running_var",
+    "trunk.stages.2.blocks.9.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.2.blocks.9.mlp.fc1.weight",
+    "trunk.stages.2.blocks.9.mlp.fc1.bias",
+    "trunk.stages.2.blocks.9.mlp.fc2.weight",
+    "trunk.stages.2.blocks.9.mlp.fc2.bias",
+    "trunk.stages.2.blocks.9.layer_scale.gamma",
+    "trunk.stages.3.downsample.proj.0.se.fc1.weight",
+    "trunk.stages.3.downsample.proj.0.se.fc1.bias",
+    "trunk.stages.3.downsample.proj.0.se.fc2.weight",
+    "trunk.stages.3.downsample.proj.0.se.fc2.bias",
+    "trunk.stages.3.downsample.proj.0.reparam_conv.weight",
+    "trunk.stages.3.downsample.proj.0.reparam_conv.bias",
+    "trunk.stages.3.downsample.proj.1.reparam_conv.weight",
+    "trunk.stages.3.downsample.proj.1.reparam_conv.bias",
+    "trunk.stages.3.pos_emb.reparam_conv.weight",
+    "trunk.stages.3.pos_emb.reparam_conv.bias",
+    "trunk.stages.3.blocks.0.norm.weight",
+    "trunk.stages.3.blocks.0.norm.bias",
+    "trunk.stages.3.blocks.0.norm.running_mean",
+    "trunk.stages.3.blocks.0.norm.running_var",
+    "trunk.stages.3.blocks.0.norm.num_batches_tracked",
+    "trunk.stages.3.blocks.0.token_mixer.qkv.weight",
+    "trunk.stages.3.blocks.0.token_mixer.proj.weight",
+    "trunk.stages.3.blocks.0.token_mixer.proj.bias",
+    "trunk.stages.3.blocks.0.layer_scale_1.gamma",
+    "trunk.stages.3.blocks.0.mlp.conv.conv.weight",
+    "trunk.stages.3.blocks.0.mlp.conv.bn.weight",
+    "trunk.stages.3.blocks.0.mlp.conv.bn.bias",
+    "trunk.stages.3.blocks.0.mlp.conv.bn.running_mean",
+    "trunk.stages.3.blocks.0.mlp.conv.bn.running_var",
+    "trunk.stages.3.blocks.0.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.3.blocks.0.mlp.fc1.weight",
+    "trunk.stages.3.blocks.0.mlp.fc1.bias",
+    "trunk.stages.3.blocks.0.mlp.fc2.weight",
+    "trunk.stages.3.blocks.0.mlp.fc2.bias",
+    "trunk.stages.3.blocks.0.layer_scale_2.gamma",
+    "trunk.stages.3.blocks.1.norm.weight",
+    "trunk.stages.3.blocks.1.norm.bias",
+    "trunk.stages.3.blocks.1.norm.running_mean",
+    "trunk.stages.3.blocks.1.norm.running_var",
+    "trunk.stages.3.blocks.1.norm.num_batches_tracked",
+    "trunk.stages.3.blocks.1.token_mixer.qkv.weight",
+    "trunk.stages.3.blocks.1.token_mixer.proj.weight",
+    "trunk.stages.3.blocks.1.token_mixer.proj.bias",
+    "trunk.stages.3.blocks.1.layer_scale_1.gamma",
+    "trunk.stages.3.blocks.1.mlp.conv.conv.weight",
+    "trunk.stages.3.blocks.1.mlp.conv.bn.weight",
+    "trunk.stages.3.blocks.1.mlp.conv.bn.bias",
+    "trunk.stages.3.blocks.1.mlp.conv.bn.running_mean",
+    "trunk.stages.3.blocks.1.mlp.conv.bn.running_var",
+    "trunk.stages.3.blocks.1.mlp.conv.bn.num_batches_tracked",
+    "trunk.stages.3.blocks.1.mlp.fc1.weight",
+    "trunk.stages.3.blocks.1.mlp.fc1.bias",
+    "trunk.stages.3.blocks.1.mlp.fc2.weight",
+    "trunk.stages.3.blocks.1.mlp.fc2.bias",
+    "trunk.stages.3.blocks.1.layer_scale_2.gamma",
+    "trunk.final_conv.se.fc1.weight",
+    "trunk.final_conv.se.fc1.bias",
+    "trunk.final_conv.se.fc2.weight",
+    "trunk.final_conv.se.fc2.bias",
+    "trunk.final_conv.reparam_conv.weight",
+    "trunk.final_conv.reparam_conv.bias",
+    "trunk.head.fc.weight",
+    "trunk.head.fc.bias"
+  ],
+  "shapes": {
+    "trunk.stem.0.reparam_conv.weight": [
+      64,
+      3,
+      3,
+      3
+    ],
+    "trunk.stem.0.reparam_conv.bias": [
+      64
+    ],
+    "trunk.stem.1.reparam_conv.weight": [
+      64,
+      1,
+      3,
+      3
+    ],
+    "trunk.stem.1.reparam_conv.bias": [
+      64
+    ],
+    "trunk.stem.2.reparam_conv.weight": [
+      64,
+      64,
+      1,
+      1
+    ],
+    "trunk.stem.2.reparam_conv.bias": [
+      64
+    ],
+    "trunk.stages.0.blocks.0.token_mixer.reparam_conv.weight": [
+      64,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.0.blocks.0.token_mixer.reparam_conv.bias": [
+      64
+    ],
+    "trunk.stages.0.blocks.0.mlp.conv.conv.weight": [
+      64,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.0.blocks.0.mlp.conv.bn.weight": [
+      64
+    ],
+    "trunk.stages.0.blocks.0.mlp.conv.bn.bias": [
+      64
+    ],
+    "trunk.stages.0.blocks.0.mlp.conv.bn.running_mean": [
+      64
+    ],
+    "trunk.stages.0.blocks.0.mlp.conv.bn.running_var": [
+      64
+    ],
+    "trunk.stages.0.blocks.0.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.0.blocks.0.mlp.fc1.weight": [
+      192,
+      64,
+      1,
+      1
+    ],
+    "trunk.stages.0.blocks.0.mlp.fc1.bias": [
+      192
+    ],
+    "trunk.stages.0.blocks.0.mlp.fc2.weight": [
+      64,
+      192,
+      1,
+      1
+    ],
+    "trunk.stages.0.blocks.0.mlp.fc2.bias": [
+      64
+    ],
+    "trunk.stages.0.blocks.0.layer_scale.gamma": [
+      64,
+      1,
+      1
+    ],
+    "trunk.stages.0.blocks.1.token_mixer.reparam_conv.weight": [
+      64,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.0.blocks.1.token_mixer.reparam_conv.bias": [
+      64
+    ],
+    "trunk.stages.0.blocks.1.mlp.conv.conv.weight": [
+      64,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.0.blocks.1.mlp.conv.bn.weight": [
+      64
+    ],
+    "trunk.stages.0.blocks.1.mlp.conv.bn.bias": [
+      64
+    ],
+    "trunk.stages.0.blocks.1.mlp.conv.bn.running_mean": [
+      64
+    ],
+    "trunk.stages.0.blocks.1.mlp.conv.bn.running_var": [
+      64
+    ],
+    "trunk.stages.0.blocks.1.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.0.blocks.1.mlp.fc1.weight": [
+      192,
+      64,
+      1,
+      1
+    ],
+    "trunk.stages.0.blocks.1.mlp.fc1.bias": [
+      192
+    ],
+    "trunk.stages.0.blocks.1.mlp.fc2.weight": [
+      64,
+      192,
+      1,
+      1
+    ],
+    "trunk.stages.0.blocks.1.mlp.fc2.bias": [
+      64
+    ],
+    "trunk.stages.0.blocks.1.layer_scale.gamma": [
+      64,
+      1,
+      1
+    ],
+    "trunk.stages.1.downsample.proj.0.reparam_conv.weight": [
+      128,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.1.downsample.proj.0.reparam_conv.bias": [
+      128
+    ],
+    "trunk.stages.1.downsample.proj.1.reparam_conv.weight": [
+      128,
+      128,
+      1,
+      1
+    ],
+    "trunk.stages.1.downsample.proj.1.reparam_conv.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.0.token_mixer.reparam_conv.weight": [
+      128,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.1.blocks.0.token_mixer.reparam_conv.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.0.mlp.conv.conv.weight": [
+      128,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.1.blocks.0.mlp.conv.bn.weight": [
+      128
+    ],
+    "trunk.stages.1.blocks.0.mlp.conv.bn.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.0.mlp.conv.bn.running_mean": [
+      128
+    ],
+    "trunk.stages.1.blocks.0.mlp.conv.bn.running_var": [
+      128
+    ],
+    "trunk.stages.1.blocks.0.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.1.blocks.0.mlp.fc1.weight": [
+      384,
+      128,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.0.mlp.fc1.bias": [
+      384
+    ],
+    "trunk.stages.1.blocks.0.mlp.fc2.weight": [
+      128,
+      384,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.0.mlp.fc2.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.0.layer_scale.gamma": [
+      128,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.1.token_mixer.reparam_conv.weight": [
+      128,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.1.blocks.1.token_mixer.reparam_conv.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.1.mlp.conv.conv.weight": [
+      128,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.1.blocks.1.mlp.conv.bn.weight": [
+      128
+    ],
+    "trunk.stages.1.blocks.1.mlp.conv.bn.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.1.mlp.conv.bn.running_mean": [
+      128
+    ],
+    "trunk.stages.1.blocks.1.mlp.conv.bn.running_var": [
+      128
+    ],
+    "trunk.stages.1.blocks.1.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.1.blocks.1.mlp.fc1.weight": [
+      384,
+      128,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.1.mlp.fc1.bias": [
+      384
+    ],
+    "trunk.stages.1.blocks.1.mlp.fc2.weight": [
+      128,
+      384,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.1.mlp.fc2.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.1.layer_scale.gamma": [
+      128,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.2.token_mixer.reparam_conv.weight": [
+      128,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.1.blocks.2.token_mixer.reparam_conv.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.2.mlp.conv.conv.weight": [
+      128,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.1.blocks.2.mlp.conv.bn.weight": [
+      128
+    ],
+    "trunk.stages.1.blocks.2.mlp.conv.bn.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.2.mlp.conv.bn.running_mean": [
+      128
+    ],
+    "trunk.stages.1.blocks.2.mlp.conv.bn.running_var": [
+      128
+    ],
+    "trunk.stages.1.blocks.2.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.1.blocks.2.mlp.fc1.weight": [
+      384,
+      128,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.2.mlp.fc1.bias": [
+      384
+    ],
+    "trunk.stages.1.blocks.2.mlp.fc2.weight": [
+      128,
+      384,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.2.mlp.fc2.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.2.layer_scale.gamma": [
+      128,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.3.token_mixer.reparam_conv.weight": [
+      128,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.1.blocks.3.token_mixer.reparam_conv.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.3.mlp.conv.conv.weight": [
+      128,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.1.blocks.3.mlp.conv.bn.weight": [
+      128
+    ],
+    "trunk.stages.1.blocks.3.mlp.conv.bn.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.3.mlp.conv.bn.running_mean": [
+      128
+    ],
+    "trunk.stages.1.blocks.3.mlp.conv.bn.running_var": [
+      128
+    ],
+    "trunk.stages.1.blocks.3.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.1.blocks.3.mlp.fc1.weight": [
+      384,
+      128,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.3.mlp.fc1.bias": [
+      384
+    ],
+    "trunk.stages.1.blocks.3.mlp.fc2.weight": [
+      128,
+      384,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.3.mlp.fc2.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.3.layer_scale.gamma": [
+      128,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.4.token_mixer.reparam_conv.weight": [
+      128,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.1.blocks.4.token_mixer.reparam_conv.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.4.mlp.conv.conv.weight": [
+      128,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.1.blocks.4.mlp.conv.bn.weight": [
+      128
+    ],
+    "trunk.stages.1.blocks.4.mlp.conv.bn.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.4.mlp.conv.bn.running_mean": [
+      128
+    ],
+    "trunk.stages.1.blocks.4.mlp.conv.bn.running_var": [
+      128
+    ],
+    "trunk.stages.1.blocks.4.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.1.blocks.4.mlp.fc1.weight": [
+      384,
+      128,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.4.mlp.fc1.bias": [
+      384
+    ],
+    "trunk.stages.1.blocks.4.mlp.fc2.weight": [
+      128,
+      384,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.4.mlp.fc2.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.4.layer_scale.gamma": [
+      128,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.5.token_mixer.reparam_conv.weight": [
+      128,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.1.blocks.5.token_mixer.reparam_conv.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.5.mlp.conv.conv.weight": [
+      128,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.1.blocks.5.mlp.conv.bn.weight": [
+      128
+    ],
+    "trunk.stages.1.blocks.5.mlp.conv.bn.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.5.mlp.conv.bn.running_mean": [
+      128
+    ],
+    "trunk.stages.1.blocks.5.mlp.conv.bn.running_var": [
+      128
+    ],
+    "trunk.stages.1.blocks.5.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.1.blocks.5.mlp.fc1.weight": [
+      384,
+      128,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.5.mlp.fc1.bias": [
+      384
+    ],
+    "trunk.stages.1.blocks.5.mlp.fc2.weight": [
+      128,
+      384,
+      1,
+      1
+    ],
+    "trunk.stages.1.blocks.5.mlp.fc2.bias": [
+      128
+    ],
+    "trunk.stages.1.blocks.5.layer_scale.gamma": [
+      128,
+      1,
+      1
+    ],
+    "trunk.stages.2.downsample.proj.0.se.fc1.weight": [
+      64,
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.downsample.proj.0.se.fc1.bias": [
+      64
+    ],
+    "trunk.stages.2.downsample.proj.0.se.fc2.weight": [
+      256,
+      64,
+      1,
+      1
+    ],
+    "trunk.stages.2.downsample.proj.0.se.fc2.bias": [
+      256
+    ],
+    "trunk.stages.2.downsample.proj.0.reparam_conv.weight": [
+      256,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.2.downsample.proj.0.reparam_conv.bias": [
+      256
+    ],
+    "trunk.stages.2.downsample.proj.1.reparam_conv.weight": [
+      256,
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.downsample.proj.1.reparam_conv.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.0.token_mixer.reparam_conv.weight": [
+      256,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.2.blocks.0.token_mixer.reparam_conv.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.0.mlp.conv.conv.weight": [
+      256,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.2.blocks.0.mlp.conv.bn.weight": [
+      256
+    ],
+    "trunk.stages.2.blocks.0.mlp.conv.bn.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.0.mlp.conv.bn.running_mean": [
+      256
+    ],
+    "trunk.stages.2.blocks.0.mlp.conv.bn.running_var": [
+      256
+    ],
+    "trunk.stages.2.blocks.0.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.2.blocks.0.mlp.fc1.weight": [
+      768,
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.0.mlp.fc1.bias": [
+      768
+    ],
+    "trunk.stages.2.blocks.0.mlp.fc2.weight": [
+      256,
+      768,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.0.mlp.fc2.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.0.layer_scale.gamma": [
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.1.token_mixer.reparam_conv.weight": [
+      256,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.2.blocks.1.token_mixer.reparam_conv.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.1.mlp.conv.conv.weight": [
+      256,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.2.blocks.1.mlp.conv.bn.weight": [
+      256
+    ],
+    "trunk.stages.2.blocks.1.mlp.conv.bn.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.1.mlp.conv.bn.running_mean": [
+      256
+    ],
+    "trunk.stages.2.blocks.1.mlp.conv.bn.running_var": [
+      256
+    ],
+    "trunk.stages.2.blocks.1.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.2.blocks.1.mlp.fc1.weight": [
+      768,
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.1.mlp.fc1.bias": [
+      768
+    ],
+    "trunk.stages.2.blocks.1.mlp.fc2.weight": [
+      256,
+      768,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.1.mlp.fc2.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.1.layer_scale.gamma": [
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.2.token_mixer.reparam_conv.weight": [
+      256,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.2.blocks.2.token_mixer.reparam_conv.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.2.mlp.conv.conv.weight": [
+      256,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.2.blocks.2.mlp.conv.bn.weight": [
+      256
+    ],
+    "trunk.stages.2.blocks.2.mlp.conv.bn.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.2.mlp.conv.bn.running_mean": [
+      256
+    ],
+    "trunk.stages.2.blocks.2.mlp.conv.bn.running_var": [
+      256
+    ],
+    "trunk.stages.2.blocks.2.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.2.blocks.2.mlp.fc1.weight": [
+      768,
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.2.mlp.fc1.bias": [
+      768
+    ],
+    "trunk.stages.2.blocks.2.mlp.fc2.weight": [
+      256,
+      768,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.2.mlp.fc2.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.2.layer_scale.gamma": [
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.3.token_mixer.reparam_conv.weight": [
+      256,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.2.blocks.3.token_mixer.reparam_conv.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.3.mlp.conv.conv.weight": [
+      256,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.2.blocks.3.mlp.conv.bn.weight": [
+      256
+    ],
+    "trunk.stages.2.blocks.3.mlp.conv.bn.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.3.mlp.conv.bn.running_mean": [
+      256
+    ],
+    "trunk.stages.2.blocks.3.mlp.conv.bn.running_var": [
+      256
+    ],
+    "trunk.stages.2.blocks.3.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.2.blocks.3.mlp.fc1.weight": [
+      768,
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.3.mlp.fc1.bias": [
+      768
+    ],
+    "trunk.stages.2.blocks.3.mlp.fc2.weight": [
+      256,
+      768,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.3.mlp.fc2.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.3.layer_scale.gamma": [
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.4.token_mixer.reparam_conv.weight": [
+      256,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.2.blocks.4.token_mixer.reparam_conv.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.4.mlp.conv.conv.weight": [
+      256,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.2.blocks.4.mlp.conv.bn.weight": [
+      256
+    ],
+    "trunk.stages.2.blocks.4.mlp.conv.bn.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.4.mlp.conv.bn.running_mean": [
+      256
+    ],
+    "trunk.stages.2.blocks.4.mlp.conv.bn.running_var": [
+      256
+    ],
+    "trunk.stages.2.blocks.4.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.2.blocks.4.mlp.fc1.weight": [
+      768,
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.4.mlp.fc1.bias": [
+      768
+    ],
+    "trunk.stages.2.blocks.4.mlp.fc2.weight": [
+      256,
+      768,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.4.mlp.fc2.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.4.layer_scale.gamma": [
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.5.token_mixer.reparam_conv.weight": [
+      256,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.2.blocks.5.token_mixer.reparam_conv.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.5.mlp.conv.conv.weight": [
+      256,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.2.blocks.5.mlp.conv.bn.weight": [
+      256
+    ],
+    "trunk.stages.2.blocks.5.mlp.conv.bn.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.5.mlp.conv.bn.running_mean": [
+      256
+    ],
+    "trunk.stages.2.blocks.5.mlp.conv.bn.running_var": [
+      256
+    ],
+    "trunk.stages.2.blocks.5.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.2.blocks.5.mlp.fc1.weight": [
+      768,
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.5.mlp.fc1.bias": [
+      768
+    ],
+    "trunk.stages.2.blocks.5.mlp.fc2.weight": [
+      256,
+      768,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.5.mlp.fc2.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.5.layer_scale.gamma": [
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.6.token_mixer.reparam_conv.weight": [
+      256,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.2.blocks.6.token_mixer.reparam_conv.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.6.mlp.conv.conv.weight": [
+      256,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.2.blocks.6.mlp.conv.bn.weight": [
+      256
+    ],
+    "trunk.stages.2.blocks.6.mlp.conv.bn.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.6.mlp.conv.bn.running_mean": [
+      256
+    ],
+    "trunk.stages.2.blocks.6.mlp.conv.bn.running_var": [
+      256
+    ],
+    "trunk.stages.2.blocks.6.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.2.blocks.6.mlp.fc1.weight": [
+      768,
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.6.mlp.fc1.bias": [
+      768
+    ],
+    "trunk.stages.2.blocks.6.mlp.fc2.weight": [
+      256,
+      768,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.6.mlp.fc2.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.6.layer_scale.gamma": [
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.7.token_mixer.reparam_conv.weight": [
+      256,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.2.blocks.7.token_mixer.reparam_conv.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.7.mlp.conv.conv.weight": [
+      256,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.2.blocks.7.mlp.conv.bn.weight": [
+      256
+    ],
+    "trunk.stages.2.blocks.7.mlp.conv.bn.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.7.mlp.conv.bn.running_mean": [
+      256
+    ],
+    "trunk.stages.2.blocks.7.mlp.conv.bn.running_var": [
+      256
+    ],
+    "trunk.stages.2.blocks.7.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.2.blocks.7.mlp.fc1.weight": [
+      768,
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.7.mlp.fc1.bias": [
+      768
+    ],
+    "trunk.stages.2.blocks.7.mlp.fc2.weight": [
+      256,
+      768,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.7.mlp.fc2.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.7.layer_scale.gamma": [
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.8.token_mixer.reparam_conv.weight": [
+      256,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.2.blocks.8.token_mixer.reparam_conv.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.8.mlp.conv.conv.weight": [
+      256,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.2.blocks.8.mlp.conv.bn.weight": [
+      256
+    ],
+    "trunk.stages.2.blocks.8.mlp.conv.bn.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.8.mlp.conv.bn.running_mean": [
+      256
+    ],
+    "trunk.stages.2.blocks.8.mlp.conv.bn.running_var": [
+      256
+    ],
+    "trunk.stages.2.blocks.8.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.2.blocks.8.mlp.fc1.weight": [
+      768,
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.8.mlp.fc1.bias": [
+      768
+    ],
+    "trunk.stages.2.blocks.8.mlp.fc2.weight": [
+      256,
+      768,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.8.mlp.fc2.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.8.layer_scale.gamma": [
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.9.token_mixer.reparam_conv.weight": [
+      256,
+      1,
+      3,
+      3
+    ],
+    "trunk.stages.2.blocks.9.token_mixer.reparam_conv.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.9.mlp.conv.conv.weight": [
+      256,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.2.blocks.9.mlp.conv.bn.weight": [
+      256
+    ],
+    "trunk.stages.2.blocks.9.mlp.conv.bn.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.9.mlp.conv.bn.running_mean": [
+      256
+    ],
+    "trunk.stages.2.blocks.9.mlp.conv.bn.running_var": [
+      256
+    ],
+    "trunk.stages.2.blocks.9.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.2.blocks.9.mlp.fc1.weight": [
+      768,
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.9.mlp.fc1.bias": [
+      768
+    ],
+    "trunk.stages.2.blocks.9.mlp.fc2.weight": [
+      256,
+      768,
+      1,
+      1
+    ],
+    "trunk.stages.2.blocks.9.mlp.fc2.bias": [
+      256
+    ],
+    "trunk.stages.2.blocks.9.layer_scale.gamma": [
+      256,
+      1,
+      1
+    ],
+    "trunk.stages.3.downsample.proj.0.se.fc1.weight": [
+      128,
+      512,
+      1,
+      1
+    ],
+    "trunk.stages.3.downsample.proj.0.se.fc1.bias": [
+      128
+    ],
+    "trunk.stages.3.downsample.proj.0.se.fc2.weight": [
+      512,
+      128,
+      1,
+      1
+    ],
+    "trunk.stages.3.downsample.proj.0.se.fc2.bias": [
+      512
+    ],
+    "trunk.stages.3.downsample.proj.0.reparam_conv.weight": [
+      512,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.3.downsample.proj.0.reparam_conv.bias": [
+      512
+    ],
+    "trunk.stages.3.downsample.proj.1.reparam_conv.weight": [
+      512,
+      512,
+      1,
+      1
+    ],
+    "trunk.stages.3.downsample.proj.1.reparam_conv.bias": [
+      512
+    ],
+    "trunk.stages.3.pos_emb.reparam_conv.weight": [
+      512,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.3.pos_emb.reparam_conv.bias": [
+      512
+    ],
+    "trunk.stages.3.blocks.0.norm.weight": [
+      512
+    ],
+    "trunk.stages.3.blocks.0.norm.bias": [
+      512
+    ],
+    "trunk.stages.3.blocks.0.norm.running_mean": [
+      512
+    ],
+    "trunk.stages.3.blocks.0.norm.running_var": [
+      512
+    ],
+    "trunk.stages.3.blocks.0.norm.num_batches_tracked": [],
+    "trunk.stages.3.blocks.0.token_mixer.qkv.weight": [
+      1536,
+      512
+    ],
+    "trunk.stages.3.blocks.0.token_mixer.proj.weight": [
+      512,
+      512
+    ],
+    "trunk.stages.3.blocks.0.token_mixer.proj.bias": [
+      512
+    ],
+    "trunk.stages.3.blocks.0.layer_scale_1.gamma": [
+      512,
+      1,
+      1
+    ],
+    "trunk.stages.3.blocks.0.mlp.conv.conv.weight": [
+      512,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.3.blocks.0.mlp.conv.bn.weight": [
+      512
+    ],
+    "trunk.stages.3.blocks.0.mlp.conv.bn.bias": [
+      512
+    ],
+    "trunk.stages.3.blocks.0.mlp.conv.bn.running_mean": [
+      512
+    ],
+    "trunk.stages.3.blocks.0.mlp.conv.bn.running_var": [
+      512
+    ],
+    "trunk.stages.3.blocks.0.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.3.blocks.0.mlp.fc1.weight": [
+      1536,
+      512,
+      1,
+      1
+    ],
+    "trunk.stages.3.blocks.0.mlp.fc1.bias": [
+      1536
+    ],
+    "trunk.stages.3.blocks.0.mlp.fc2.weight": [
+      512,
+      1536,
+      1,
+      1
+    ],
+    "trunk.stages.3.blocks.0.mlp.fc2.bias": [
+      512
+    ],
+    "trunk.stages.3.blocks.0.layer_scale_2.gamma": [
+      512,
+      1,
+      1
+    ],
+    "trunk.stages.3.blocks.1.norm.weight": [
+      512
+    ],
+    "trunk.stages.3.blocks.1.norm.bias": [
+      512
+    ],
+    "trunk.stages.3.blocks.1.norm.running_mean": [
+      512
+    ],
+    "trunk.stages.3.blocks.1.norm.running_var": [
+      512
+    ],
+    "trunk.stages.3.blocks.1.norm.num_batches_tracked": [],
+    "trunk.stages.3.blocks.1.token_mixer.qkv.weight": [
+      1536,
+      512
+    ],
+    "trunk.stages.3.blocks.1.token_mixer.proj.weight": [
+      512,
+      512
+    ],
+    "trunk.stages.3.blocks.1.token_mixer.proj.bias": [
+      512
+    ],
+    "trunk.stages.3.blocks.1.layer_scale_1.gamma": [
+      512,
+      1,
+      1
+    ],
+    "trunk.stages.3.blocks.1.mlp.conv.conv.weight": [
+      512,
+      1,
+      7,
+      7
+    ],
+    "trunk.stages.3.blocks.1.mlp.conv.bn.weight": [
+      512
+    ],
+    "trunk.stages.3.blocks.1.mlp.conv.bn.bias": [
+      512
+    ],
+    "trunk.stages.3.blocks.1.mlp.conv.bn.running_mean": [
+      512
+    ],
+    "trunk.stages.3.blocks.1.mlp.conv.bn.running_var": [
+      512
+    ],
+    "trunk.stages.3.blocks.1.mlp.conv.bn.num_batches_tracked": [],
+    "trunk.stages.3.blocks.1.mlp.fc1.weight": [
+      1536,
+      512,
+      1,
+      1
+    ],
+    "trunk.stages.3.blocks.1.mlp.fc1.bias": [
+      1536
+    ],
+    "trunk.stages.3.blocks.1.mlp.fc2.weight": [
+      512,
+      1536,
+      1,
+      1
+    ],
+    "trunk.stages.3.blocks.1.mlp.fc2.bias": [
+      512
+    ],
+    "trunk.stages.3.blocks.1.layer_scale_2.gamma": [
+      512,
+      1,
+      1
+    ],
+    "trunk.final_conv.se.fc1.weight": [
+      64,
+      1024,
+      1,
+      1
+    ],
+    "trunk.final_conv.se.fc1.bias": [
+      64
+    ],
+    "trunk.final_conv.se.fc2.weight": [
+      1024,
+      64,
+      1,
+      1
+    ],
+    "trunk.final_conv.se.fc2.bias": [
+      1024
+    ],
+    "trunk.final_conv.reparam_conv.weight": [
+      1024,
+      1,
+      3,
+      3
+    ],
+    "trunk.final_conv.reparam_conv.bias": [
+      1024
+    ],
+    "trunk.head.fc.weight": [
+      512,
+      1024
+    ],
+    "trunk.head.fc.bias": [
+      512
+    ]
+  }
+}

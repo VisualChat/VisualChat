@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
+#if os(macOS)
 import AppKit
+#endif
 
 struct AddLibrarySheet: View {
     @Binding var libraryName: String
@@ -52,6 +54,7 @@ struct AddLibrarySheet: View {
     }
     
     private func selectFolder() {
+        #if os(macOS)
         let panel = NSOpenPanel()
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
@@ -65,5 +68,9 @@ struct AddLibrarySheet: View {
                 libraryName = url.lastPathComponent
             }
         }
+        #else
+        // iOS: File picker not available for folder selection
+        // User must manually enter the path or use document picker
+        #endif
     }
 }

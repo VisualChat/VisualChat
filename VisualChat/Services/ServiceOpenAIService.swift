@@ -16,7 +16,7 @@ class ServiceOpenAIService {
     private let apiVersion = "2025-01-01-preview"
     
     // Replace with your actual API key
-    private let subscriptionKey = "<<YOUR_AZURE_OPENAI_API_KEY>>"
+    private let subscriptionKey = "<<Azure OpenAI Subscription Key>>"
     
     func sendChatCompletion(messages: [ServiceChatMessage], tools: [ToolDefinition]? = nil, toolChoice: String? = nil) async throws -> ServiceChatResponse {
         // Build the full URL - Azure OpenAI format

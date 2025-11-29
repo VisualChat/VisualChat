@@ -86,6 +86,7 @@ class Photo {
     var fileSize: Int64
     var createdAt: Date
     var modifiedAt: Date
+    var embedding: [Float]? // Image embedding vector from MobileCLIP
     var library: PhotoLibrary?
 
     init(
@@ -95,6 +96,7 @@ class Photo {
         fileSize: Int64,
         createdAt: Date = Date(),
         modifiedAt: Date,
+        embedding: [Float]? = nil,
         library: PhotoLibrary? = nil
     ) {
         self.id = id
@@ -103,6 +105,7 @@ class Photo {
         self.fileSize = fileSize
         self.createdAt = createdAt
         self.modifiedAt = modifiedAt
+        self.embedding = embedding
         self.library = library
     }
 }

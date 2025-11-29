@@ -15,6 +15,7 @@ struct ContentView: View {
 
     @State private var newThreadTitle: String = ""
     @State private var selectedThread: ChatThread?
+    @AppStorage("lastSelectedChatThreadID") private var lastSelectedChatThreadID: String?
 
     var body: some View {
         NavigationSplitView {
@@ -42,6 +43,9 @@ struct ContentView: View {
                         }
                         .buttonStyle(.plain)
                         .tag(thread)
+                        .onChange(of: selectedThread) { _, newValue in
+                            lastSelectedChatThreadID = newValue?.id.uuidString
+                        }
                         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                             Button(role: .destructive) {
                                 deleteThread(thread)
@@ -72,6 +76,9 @@ struct ContentView: View {
                     .disabled(newThreadTitle.trimmingCharacters(in: .whitespaces).isEmpty)
                 }
                 .padding()
+            }
+            .onAppear {
+                restoreLastSelectedThread()
             }
         } detail: {
             // Detail view
@@ -105,5 +112,15 @@ struct ContentView: View {
             selectedThread = nil
         }
         context.delete(thread)
+    }
+    
+    private func restoreLastSelectedThread() {
+        guard selectedThread == nil,
+              let threadIDString = lastSelectedChatThreadID,
+              let threadID = UUID(uuidString: threadIDString) else {
+            return
+        }
+        
+        selectedThread = threads.first { $0.id == threadID }
     }
 }

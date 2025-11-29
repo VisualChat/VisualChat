@@ -6,13 +6,22 @@
 //
 
 import SwiftUI
+#if os(macOS)
 import AppKit
+#elseif os(iOS)
+import UIKit
+#endif
 
 struct PhotoThumbnailView: View {
     let photo: Photo
+    #if os(macOS)
     @State private var thumbnail: NSImage?
+    #elseif os(iOS)
+    @State private var thumbnail: UIImage?
+    #endif
     
     private func requestAccessIfNeeded() -> URL? {
+        #if os(macOS)
         guard let library = photo.library,
               let bookmarkData = library.securityBookmark else {
             return nil
@@ -35,17 +44,30 @@ struct PhotoThumbnailView: View {
         }
         
         return nil
+        #else
+        // iOS doesn't use security-scoped bookmarks
+        return nil
+        #endif
     }
     
     var body: some View {
         VStack {
             if let thumbnail = thumbnail {
+                #if os(macOS)
                 Image(nsImage: thumbnail)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 150, height: 150)
                     .clipped()
                     .cornerRadius(8)
+                #elseif os(iOS)
+                Image(uiImage: thumbnail)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 150, height: 150)
+                    .clipped()
+                    .cornerRadius(8)
+                #endif
             } else {
                 Rectangle()
                     .fill(Color.gray.opacity(0.3))
@@ -74,10 +96,13 @@ struct PhotoThumbnailView: View {
             let scopedURL = requestAccessIfNeeded()
             
             defer {
+                #if os(macOS)
                 scopedURL?.stopAccessingSecurityScopedResource()
+                #endif
             }
             
             // Load and process image using CGImage (thread-safe)
+            #if os(macOS)
             let thumbnailImage = await Task.detached { () -> NSImage? in
                 let url = URL(fileURLWithPath: filePath)
                 
@@ -128,6 +153,58 @@ struct PhotoThumbnailView: View {
                 // Convert to NSImage
                 return NSImage(cgImage: thumbnailCGImage, size: targetSize)
             }.value
+            #elseif os(iOS)
+            let thumbnailImage = await Task.detached { () -> UIImage? in
+                let url = URL(fileURLWithPath: filePath)
+                
+                guard let imageSource = CGImageSourceCreateWithURL(url as CFURL, nil),
+                      let cgImage = CGImageSourceCreateImageAtIndex(imageSource, 0, nil) else {
+                    return nil
+                }
+                
+                let targetSize = CGSize(width: 300, height: 300)
+                let imageWidth = CGFloat(cgImage.width)
+                let imageHeight = CGFloat(cgImage.height)
+                
+                // Calculate scale to fill the target size
+                let scaleWidth = targetSize.width / imageWidth
+                let scaleHeight = targetSize.height / imageHeight
+                let scale = max(scaleWidth, scaleHeight)
+                
+                // Calculate scaled dimensions
+                let scaledWidth = imageWidth * scale
+                let scaledHeight = imageHeight * scale
+                
+                // Calculate center crop rect
+                let x = (targetSize.width - scaledWidth) / 2
+                let y = (targetSize.height - scaledHeight) / 2
+                
+                // Create bitmap context
+                guard let context = CGContext(
+                    data: nil,
+                    width: Int(targetSize.width),
+                    height: Int(targetSize.height),
+                    bitsPerComponent: 8,
+                    bytesPerRow: 0,
+                    space: CGColorSpaceCreateDeviceRGB(),
+                    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
+                ) else {
+                    return nil
+                }
+                
+                // Draw the image centered and scaled
+                context.interpolationQuality = .high
+                context.draw(cgImage, in: CGRect(x: x, y: y, width: scaledWidth, height: scaledHeight))
+                
+                // Create CGImage from context
+                guard let thumbnailCGImage = context.makeImage() else {
+                    return nil
+                }
+                
+                // Convert to UIImage
+                return UIImage(cgImage: thumbnailCGImage)
+            }.value
+            #endif
             
             // Update on main thread
             await MainActor.run {

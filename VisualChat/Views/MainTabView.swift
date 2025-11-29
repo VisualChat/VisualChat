@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @AppStorage("selectedTab") private var selectedTab = 0
+    
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             ContentView()
                 .tabItem {
                     Label("Chat", systemImage: "bubble.left.and.bubble.right")
                 }
+                .tag(0)
             
             PhotosView()
                 .tabItem {
                     Label("Photos", systemImage: "photo.on.rectangle.angled")
                 }
+                .tag(1)
         }
     }
 }
