@@ -22,6 +22,9 @@ class PhotoIndexingService: ObservableObject {
     private let supportedExtensions = ["jpg", "jpeg", "png", "heic", "heif", "gif", "tiff", "tif", "bmp", "webp"]
     private var imageEncoder: ImageEncoderMobileClipS2?
     
+    /// HNSW index managers keyed by library ID
+    private var hnswIndexManagers: [UUID: HNSWIndexManager] = [:]
+    
     func indexPhotos(at path: String, library: PhotoLibrary, context: ModelContext) async throws {
         let totalStartTime = CFAbsoluteTimeGetCurrent()
         print("[PhotoIndexing] Starting indexing for path: \(path)")
@@ -194,11 +197,118 @@ class PhotoIndexingService: ObservableObject {
         print("[PhotoIndexing] Total indexing time: \(String(format: "%.3f", totalTime))s for \(photoFiles.count) photos")
         print("[PhotoIndexing] Average per photo: \(String(format: "%.3f", totalTime / Double(max(photoFiles.count, 1))))s")
         
+        // Build HNSW index from all embeddings
+        await MainActor.run { statusMessage = "Building HNSW search index..." }
+        await buildHNSWIndex(for: library, context: context)
+        
         await MainActor.run {
             library.lastIndexedAt = Date()
             try? context.save()
             statusMessage = "Indexing complete!"
         }
+    }
+    
+    // MARK: - HNSW Index Management
+    
+    /// Build HNSW index for a library from its photos
+    private func buildHNSWIndex(for library: PhotoLibrary, context: ModelContext) async {
+        let startTime = CFAbsoluteTimeGetCurrent()
+        print("[PhotoIndexing] Building HNSW index for library: \(library.name)")
+        
+        // Get or create index manager for this library
+        let indexManager = getOrCreateIndexManager(for: library.id)
+        
+        // Collect all photos with embeddings
+        let photosWithEmbeddings = library.photos.compactMap { photo -> (UUID, [Float])? in
+            guard let embedding = photo.embedding else { return nil }
+            return (photo.id, embedding)
+        }
+        
+        guard !photosWithEmbeddings.isEmpty else {
+            print("[PhotoIndexing] No photos with embeddings to index")
+            return
+        }
+        
+        do {
+            // Initialize the index with enough capacity (add 20% buffer for future additions)
+            let maxElements = max(photosWithEmbeddings.count + photosWithEmbeddings.count / 5, 1000)
+            try await indexManager.initializeIndex(maxElements: maxElements)
+            
+            // Add all embeddings in batches
+            let batchSize = 100
+            for batchStart in stride(from: 0, to: photosWithEmbeddings.count, by: batchSize) {
+                let batchEnd = min(batchStart + batchSize, photosWithEmbeddings.count)
+                let batch = Array(photosWithEmbeddings[batchStart..<batchEnd])
+                
+                let embeddings = batch.map { $0.1 }
+                let photoIds = batch.map { $0.0 }
+                
+                try await indexManager.addItems(embeddings: embeddings, photoIds: photoIds)
+            }
+            
+            // Save the index to disk
+            try await indexManager.saveIndex()
+            
+            let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+            let count = await indexManager.currentCount
+            print("[PhotoIndexing] HNSW index built in \(String(format: "%.3f", timeElapsed))s with \(count) items")
+        } catch {
+            print("[PhotoIndexing] Failed to build HNSW index: \(error)")
+        }
+    }
+    
+    /// Get or create an HNSW index manager for a library
+    func getOrCreateIndexManager(for libraryId: UUID) -> HNSWIndexManager {
+        if let existing = hnswIndexManagers[libraryId] {
+            return existing
+        }
+        
+        let manager = HNSWIndexManager(libraryId: libraryId)
+        hnswIndexManagers[libraryId] = manager
+        return manager
+    }
+    
+    /// Load HNSW index for a library if it exists on disk
+    func loadHNSWIndex(for library: PhotoLibrary) async throws {
+        let indexManager = getOrCreateIndexManager(for: library.id)
+        
+        if await indexManager.indexExists {
+            try await indexManager.loadIndex()
+            print("[PhotoIndexing] Loaded HNSW index for library: \(library.name)")
+        } else {
+            print("[PhotoIndexing] No HNSW index found for library: \(library.name)")
+        }
+    }
+    
+    /// Search photos using HNSW index with cosine similarity
+    /// - Parameters:
+    ///   - queryEmbedding: The query embedding vector
+    ///   - library: The photo library to search
+    ///   - k: Maximum number of results to return
+    ///   - threshold: Minimum similarity threshold (0-1)
+    /// - Returns: Array of (Photo UUID, similarity score) tuples sorted by similarity
+    func searchPhotos(
+        queryEmbedding: [Float],
+        library: PhotoLibrary,
+        k: Int = 20,
+        threshold: Float = 0.0
+    ) async throws -> [(photoId: UUID, similarity: Float)] {
+        let indexManager = getOrCreateIndexManager(for: library.id)
+        
+        // Try to load index if not already loaded
+        let currentCount = await indexManager.currentCount
+        let indexExists = await indexManager.indexExists
+        if currentCount == 0 && indexExists {
+            try await indexManager.loadIndex()
+        }
+        
+        let results = try await indexManager.search(
+            queryEmbedding: queryEmbedding,
+            k: k,
+            threshold: threshold
+        )
+        
+        return results.map { ($0.photoId, $0.similarity) }
     }
     
     private func isPhotoFile(_ url: URL) -> Bool {
