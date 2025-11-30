@@ -61,4 +61,23 @@ struct Utils {
         }
         return inverted
     }
+
+    /// Calculate cosine similarity between two vectors, scaled to [0, 1]
+    /// where 1 means identical direction and 0 means opposite direction
+    static func cosineSimilarity(_ a: [Float], _ b: [Float]) -> Float {
+        guard a.count == b.count, !a.isEmpty else { return 0.0 }
+        var dotProduct: Float = 0.0
+        var normA: Float = 0.0
+        var normB: Float = 0.0
+        for i in 0..<a.count {
+            dotProduct += a[i] * b[i]
+            normA += a[i] * a[i]
+            normB += b[i] * b[i]
+        }
+        let denominator = sqrt(normA) * sqrt(normB)
+        guard denominator > 0 else { return 0.0 }
+        let cosine = dotProduct / denominator
+        // Scale from [-1, 1] to [0, 1]
+        return (cosine + 1.0) / 2.0
+    }
 }

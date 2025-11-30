@@ -27,6 +27,8 @@ class TextEncoderMobileClipS2 {
     /// Load the compiled model asynchronously on a background thread
     /// - Throws: TextEncoderError if model cannot be loaded
     func loadModel() async throws {
+        if model != nil { return }
+        
         let startTime = CFAbsoluteTimeGetCurrent()
         print("[TextEncoder] Starting model load...")
         

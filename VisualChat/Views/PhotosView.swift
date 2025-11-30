@@ -101,6 +101,7 @@ struct PhotosView: View {
             // Detail view with photo grid
             if let library = selectedLibrary {
                 PhotoGridView(library: library)
+                    .id(library.id) // Reset view state (including search) when library changes
             } else {
                 ContentUnavailableView(
                     "Select a Library",

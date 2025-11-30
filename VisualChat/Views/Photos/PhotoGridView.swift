@@ -14,6 +14,9 @@ struct PhotoGridView: View {
     @Query private var allPhotos: [Photo]
     @State private var selectedPhoto: Photo?
     @State private var searchText = ""
+    @State private var textEncoder = TextEncoderMobileClipS2()
+    @State private var searchResults: [Photo] = []
+    @State private var isSearching = false
     
     private let columns = [
         GridItem(.adaptive(minimum: 150, maximum: 200), spacing: 16)
@@ -35,9 +38,7 @@ struct PhotoGridView: View {
         if searchText.isEmpty {
             return allPhotos
         } else {
-            return allPhotos.filter {
-                $0.fileName.localizedCaseInsensitiveContains(searchText)
-            }
+            return searchResults
         }
     }
     
@@ -62,11 +63,41 @@ struct PhotoGridView: View {
                     .padding()
                 }
                 .searchable(text: $searchText, prompt: "Search photos")
+                .task(id: searchText) {
+                    if searchText.isEmpty {
+                        searchResults = []
+                        return
+                    }
+                    
+                    isSearching = true
+                    let startTime = Date()
+                    do {
+                        let embedding = try await textEncoder.encode(text: searchText)
+                        
+                        let sortedPhotos = allPhotos.compactMap { photo -> (Photo, Float)? in
+                            guard let photoEmbedding = photo.embedding else { return nil }
+                            let similarity = Utils.cosineSimilarity(embedding, photoEmbedding)
+                            // print("Cosine Similarity: \(similarity)")
+                            return similarity >= 0.5 ? (photo, similarity) : nil
+                        }
+                        .sorted { $0.1 > $1.1 }
+                        .map { $0.0 }
+                        
+                        searchResults = sortedPhotos
+                        print("Search took \(Date().timeIntervalSince(startTime)) seconds")
+                    } catch {
+                        print("Search failed: \(error)")
+                    }
+                    isSearching = false
+                }
             }
         }
         .navigationTitle(library.name)
         .sheet(item: $selectedPhoto) { photo in
             PhotoDetailView(photo: photo)
+        }
+        .task {
+            try? await textEncoder.loadModel()
         }
     }
 }
