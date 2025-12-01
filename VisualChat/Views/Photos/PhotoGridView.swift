@@ -93,33 +93,33 @@ struct PhotoGridView: View {
         do {
             let embedding = try await textEncoder.encode(text: searchText)
             
-            // Try HNSW search first (much faster for large collections)
-            do {
-                let hnswResults = try await photoIndexingService.searchPhotos(
-                    queryEmbedding: embedding,
-                    library: library,
-                    k: 50,  // Get top 50 results
-                    threshold: 0.0  // Minimum similarity threshold
-                )
-                
-                // Map results back to Photo objects by fetching from model context
-                let photoIds = Set(hnswResults.map { $0.photoId })
-                let matchedPhotos = allPhotos.filter { photoIds.contains($0.id) }
-                
-                // Sort by similarity score
-                let photoIdToSimilarity = Dictionary(uniqueKeysWithValues: hnswResults.map { ($0.photoId, $0.similarity) })
-                searchResults = matchedPhotos.sorted { photo1, photo2 in
-                    let sim1 = photoIdToSimilarity[photo1.id] ?? 0
-                    let sim2 = photoIdToSimilarity[photo2.id] ?? 0
-                    return sim1 > sim2
-                }
-                
-                print("[PhotoSearch] HNSW search took \(Date().timeIntervalSince(startTime)) seconds, found \(searchResults.count) results")
-            } catch {
+//            // Try HNSW search first (much faster for large collections)
+//            do {
+//                let hnswResults = try await photoIndexingService.searchPhotos(
+//                    queryEmbedding: embedding,
+//                    library: library,
+//                    k: 50,  // Get top 50 results
+//                    threshold: 0.0  // Minimum similarity threshold
+//                )
+//                
+//                // Map results back to Photo objects by fetching from model context
+//                let photoIds = Set(hnswResults.map { $0.photoId })
+//                let matchedPhotos = allPhotos.filter { photoIds.contains($0.id) }
+//                
+//                // Sort by similarity score
+//                let photoIdToSimilarity = Dictionary(uniqueKeysWithValues: hnswResults.map { ($0.photoId, $0.similarity) })
+//                searchResults = matchedPhotos.sorted { photo1, photo2 in
+//                    let sim1 = photoIdToSimilarity[photo1.id] ?? 0
+//                    let sim2 = photoIdToSimilarity[photo2.id] ?? 0
+//                    return sim1 > sim2
+//                }
+//                
+//                print("[PhotoSearch] HNSW search took \(Date().timeIntervalSince(startTime)) seconds, found \(searchResults.count) results")
+//            } catch {
                 // Fallback to brute force search if HNSW fails
-                print("[PhotoSearch] HNSW search failed, falling back to brute force: \(error)")
+                //print("[PhotoSearch] HNSW search failed, falling back to brute force: \(error)")
                 await performBruteForceSearch(embedding: embedding)
-            }
+            //}
         } catch {
             print("[PhotoSearch] Search failed: \(error)")
         }

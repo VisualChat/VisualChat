@@ -125,7 +125,8 @@ class PhotoIndexingService: ObservableObject {
         
         // Index photos in batches to allow UI updates
         let encodingStartTime = CFAbsoluteTimeGetCurrent()
-        let batchSize = 10
+        let batchSize = photoFiles.count < 100 ? 10 :
+                        photoFiles.count < 1000 ? 50 : 100
         for batchStart in stride(from: 0, to: photoFiles.count, by: batchSize) {
             let batchEnd = min(batchStart + batchSize, photoFiles.count)
             let batch = Array(photoFiles[batchStart..<batchEnd])
